@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-	<title>Home</title>
+	<title>RentFlix :: Home</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
