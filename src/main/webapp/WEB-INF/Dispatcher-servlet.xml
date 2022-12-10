@@ -24,13 +24,13 @@
 	</bean>
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+	<property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
 	<property name="user" value="sepolidori"></property>
 	<property name="password" value="sepolidori"></property>
 	<property name="jdbcUrl"
 		value="jdbc:mysql://localhost:3306/cps278_final?useSSL=false">
 	</property>
-	<property name="minPoolSize" value="5"></property>
+	<property name="minPoolSize" value="3"></property>
 	<property name="maxPoolSize" value="20"></property>
 	<property name="maxIdleTime" value="30000"></property>
 	</bean>
