@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title></title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="./resources/css/main.css" />
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="./home">RentFlix</a>
+			<ul>
+				<li><a href="./login" class="selected">Login</a></li>
+				<li><a href="#">Browse</a></li>
+				<li><a href="#">Checkout</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<ul class="users">
+			<li>
+				<a href="#" class="userPic"></a>
+				<a href="#" class="userName">Admin</a>
+			</li>
+			<li>
+				<a href="#" class="userPic"></a>
+				<a href="#" class="userName">SeanP</a>
+			</li>
+			<li>
+				<a href="#" class="userPic"></a>
+				<a href="#" class="userName">Konnor</a>
+			</li>
+			<li>
+				<a href="#" class="userPic"></a>
+				<a href="#" class="userName">John</a>
+			</li>
+		</ul>
+	</main>
+	<footer>
+		
+	</footer>
+</body>
+</html>
