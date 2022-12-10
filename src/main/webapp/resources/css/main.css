@@ -1,0 +1,134 @@
+/* General */
+body {
+	background: #361d1d;
+}
+
+.button {
+	border-radius: 5px; 
+	border: 1px solid gray; 
+	padding: 5px 10px; 
+	text-decoration: none;
+	color: black;
+	display: block;
+	width: fit-content;
+	background: white;
+	cursor: pointer;
+}
+
+.button:hover {
+	background: #3d3d3d;
+	color: white;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: fit-content;
+	margin: 50px auto;
+	padding: 50px;
+	border: 2px solid #403f3f;
+	border-radius: 5px;
+	background: #f2f2f2;
+}
+
+table, form {
+	background: #fafafa;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+}
+
+h1, h2 {
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	font-size: 18px;
+}
+
+
+/* Customer list */
+.customer-table {
+	width: fit-content;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.customer-table tr {
+	border-top: 1px solid black;
+}
+
+/* Customer info */
+.customer-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 350px;
+	gap: 5px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.customer-form label {
+	grid-column: 1/2;
+}
+
+.customer-form input, .customer-form select {
+	grid-column: 2/3;
+	width: auto;
+}
+
+.customer-form input[type*="submit"] {
+	width: fit-content;
+	justify-self: right;
+}
+
+/* Order history */
+.order-table {
+	width: fit-content;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+.order-table tr {
+	border-top: 1px solid black;
+}
+
+/* Pizza Form */
+.pizzaForm {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	width: fit-content;
+	gap: 10px 0;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.pizzaForm>label {
+	grid-column: 1/2;
+}
+
+.pizzaForm>div {
+	grid-column: 2/3;
+}
+
+.pizzaForm>input {
+	grid-column: 1/2;
+	width: fit-content;
+	justify-self: start;
+}
+
+/* Cart */
+.cart {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.cart tr {
+	border-top: 1px solid black;
+}
