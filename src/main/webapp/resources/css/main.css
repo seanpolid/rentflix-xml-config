@@ -1,0 +1,153 @@
+@media all {
+	body {
+		background: #000;
+		color: #fff;
+		font-family: 'Fuzzy Bubbles', cursive;
+		background: url(../images/movie-collage-20.jpg) repeat-y center/cover;
+	}
+	
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+@media screen {
+	/* Nav */
+	header {
+		padding: 10px 20px 50px;
+	}
+	
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	nav .selected {
+		color: #f9cbfa;
+	}
+	
+	.homeNav {
+		justify-content: end;
+	}
+	
+	nav ul {
+		display: flex;
+		gap: 25px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	
+	nav a {
+		color: inherit;
+		font-size: 18px;
+	}
+	
+	nav>a {
+		text-transform: uppercase;
+		font-size: 20px;
+	}
+	
+	nav ul a:hover, nav ul a:focus {
+		color: #f9cbfa;
+	}
+
+	/* Home */
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center; 
+	}
+	
+	h1 {
+		text-align: center;
+		font-size: 120px;
+		text-transform: uppercase;
+	}
+	
+	.signUp input {
+		font-family: cursive;
+		font-size: 25px;
+		padding: 5px 10px;
+	}
+	
+	input[type*="submit"] {
+		cursor: pointer;
+	}
+	
+	/* Login */
+	.users {
+		list-style: none;
+		display: grid;
+		gap: 50px;
+		grid-template-columns: repeat(3, 1fr);
+		width: fit-content;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.userName {
+		display: block;
+		text-align: center;
+		text-transform: uppercase;
+		padding: 5px;
+	}
+	
+	.userPic {
+		height: 300px; 
+		width: 300px; 
+		background: rgba(62, 45, 62, 0.9);
+		display: block;
+	}
+
+}
+
+@media screen and (max-width: 1058px) {
+	/* Login */
+	.users {
+		list-style: none;
+		display: grid;
+		gap: 50px;
+		grid-template-columns: repeat(3, 1fr);
+		width: fit-content;
+	}
+	
+	.userPic {
+		height: 250px; 
+		width: 250px; 
+		background: rgba(62, 45, 62, 0.9);
+		display: block;
+	}
+}
+
+@media screen and (max-width: 910px) {
+	/* Login */
+	.users {
+		list-style: none;
+		display: grid;
+		gap: 50px;
+		grid-template-columns: repeat(2, 1fr);
+		width: fit-content;
+	}
+	
+	.userPic {
+		height: 250px; 
+		width: 250px; 
+		background: rgba(62, 45, 62, 0.9);
+		display: block;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	/* Home */
+	h1 {
+		font-size: 90px;
+	}
+	
+	.signUp input {
+		font-size: 20px;
+	}
+	
+}
