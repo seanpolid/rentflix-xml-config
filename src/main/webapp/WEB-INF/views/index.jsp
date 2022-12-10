@@ -10,24 +10,26 @@
 	<link rel="stylesheet" href="./resources/css/main.css" />
 </head>
 <body>
-	<header>
-		<nav class="homeNav">
-			<ul>
-				<li><a href="./login">Login</a></li>
-				<li><a href="#">Browse</a></li>
-				<li><a href="#">Checkout</a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<h1>RentFlix</h1>
-		<form method="post" action="#" class="signUp">
-			<input type="text" placeholder="Enter your email" name="email" />
-			<input type="submit" name="submit" value="Sign Up"/>
-		</form>
-	</main>
-	<footer>
-		
-	</footer>
+	<div class="container">
+		<header>
+			<nav class="homeNav">
+				<ul>
+					<li><a href="./login">Login</a></li>
+					<li><a href="#">Browse</a></li>
+					<li><a href="#">Checkout</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1>RentFlix</h1>
+			<form method="post" action="#" class="signUp">
+				<input type="text" placeholder="Enter your email" name="email" />
+				<input type="submit" name="submit" value="Sign Up"/>
+			</form>
+		</main>
+		<footer>
+			<p>Created by: Sean Polidori</p>
+		</footer>
+	</div>
 </body>
 </html>

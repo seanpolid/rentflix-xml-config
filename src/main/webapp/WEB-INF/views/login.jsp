@@ -14,38 +14,40 @@
 	<link rel="stylesheet" href="./resources/css/main.css" />
 </head>
 <body>
-	<header>
-		<nav>
-			<a href="./home">RentFlix</a>
-			<ul>
-				<li><a href="./login" class="selected">Login</a></li>
-				<li><a href="#">Browse</a></li>
-				<li><a href="#">Checkout</a></li>
+	<div class="container">
+		<header>
+			<nav>
+				<a href="./home">RentFlix</a>
+				<ul>
+					<li><a href="./login" class="selected">Login</a></li>
+					<li><a href="#">Browse</a></li>
+					<li><a href="#">Checkout</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<ul class="users">
+				<li>
+					<a href="#" class="userPic"></a>
+					<a href="#" class="userName">Admin</a>
+				</li>
+				<li>
+					<a href="#" class="userPic"></a>
+					<a href="#" class="userName">SeanP</a>
+				</li>
+				<li>
+					<a href="#" class="userPic"></a>
+					<a href="#" class="userName">Konnor</a>
+				</li>
+				<li>
+					<a href="#" class="userPic"></a>
+					<a href="#" class="userName">John</a>
+				</li>
 			</ul>
-		</nav>
-	</header>
-	<main>
-		<ul class="users">
-			<li>
-				<a href="#" class="userPic"></a>
-				<a href="#" class="userName">Admin</a>
-			</li>
-			<li>
-				<a href="#" class="userPic"></a>
-				<a href="#" class="userName">SeanP</a>
-			</li>
-			<li>
-				<a href="#" class="userPic"></a>
-				<a href="#" class="userName">Konnor</a>
-			</li>
-			<li>
-				<a href="#" class="userPic"></a>
-				<a href="#" class="userName">John</a>
-			</li>
-		</ul>
-	</main>
-	<footer>
-		
-	</footer>
+		</main>
+		<footer>
+			<p>Created by: Sean Polidori</p>
+		</footer>
+	</div>
 </body>
 </html>
