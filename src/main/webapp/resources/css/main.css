@@ -10,14 +10,16 @@
 		text-decoration: none;
 		color: inherit;
 	}
+	
+	footer p {
+		margin: 0;
+		text-align: center;
+	}
 }
 
 @media screen {
-	/* Nav */
-	header {
-		padding: 10px 20px 50px;
-	}
 	
+	/* Nav */
 	nav {
 		display: flex;
 		align-items: center;
@@ -55,6 +57,13 @@
 	}
 
 	/* Home */
+	.container {
+		min-height: 97vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
 	main {
 		display: flex;
 		flex-direction: column;
@@ -62,9 +71,21 @@
 	}
 	
 	h1 {
+		margin-top: 0;
 		text-align: center;
 		font-size: 120px;
 		text-transform: uppercase;
+		animation: fadeIn ease 5s;
+		animation-iteration-count: 1;
+	}
+	
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		} 
+		100% {
+			opacity: 1;
+		}
 	}
 	
 	.signUp input {
@@ -100,6 +121,7 @@
 		width: 300px; 
 		background: rgba(62, 45, 62, 0.9);
 		display: block;
+		border-radius: 5px;
 	}
 
 }
