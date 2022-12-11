@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name="invoice_movie")
+@Entity
+@Table(name="invoice_movie")
 public class InvoiceMovie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

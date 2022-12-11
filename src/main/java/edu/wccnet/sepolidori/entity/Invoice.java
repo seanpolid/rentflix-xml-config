@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name="invoice")
+@Entity
+@Table(name="invoice")
 public class Invoice {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

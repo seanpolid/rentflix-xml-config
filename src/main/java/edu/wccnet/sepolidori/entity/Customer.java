@@ -5,12 +5,19 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name="customer")
+import org.hibernate.annotations.Fetch;
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="customer")
+@Component
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,7 +36,7 @@ public class Customer {
 	@Column(name="profile_img")
 	private String profileImg;
 	
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer", fetch=FetchType.LAZY)
 	private List<Invoice> invoices = new ArrayList<Invoice>();
 
 	public int getId() {
@@ -87,4 +94,5 @@ public class Customer {
 	public void removeInvoice(Invoice invoice) {
 		this.invoices.remove(invoice);
 	}
+
 }
