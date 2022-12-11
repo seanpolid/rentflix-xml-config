@@ -1,5 +1,6 @@
 @media all {
 	body {
+		position: relative;
 		background: #000;
 		color: #fff;
 		font-family: 'Fuzzy Bubbles', cursive;
@@ -65,6 +66,45 @@
 	
 	nav a:hover, nav a:focus {
 		color: #f9cbfa;
+	}
+	
+	.userNav {
+		display: none;
+	}
+	
+	.userNav ul {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 0;
+	}
+	
+	.userNav li {
+		display: block;
+		width: 100%;
+	}
+	
+	.userNav a {
+		display: block;
+		width: 100%;
+		padding: 15px 10px;
+		box-sizing: border-box;
+	}
+	
+	.userNav a:hover, .userNav a:focus {
+		background: #3e2d3e;
+		color: #fff;
+	}
+	
+	
+	.visible {
+		display: block;
+		position: absolute;
+		top: 65px;
+		right: 10px;
+		background: #121212;
+		border-radius: 5px;
+		border: 1px solid #3e2d3e;
 	}
 
 	/* Home */
@@ -168,6 +208,43 @@
 	
 	.addCustomer {
 		background: url(../images/add-customer.png) no-repeat center/cover;
+	}
+	
+	/* Add a movie */
+	.movieForm {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px 0;
+	}
+	
+	.movieCover {
+		position: absolute;
+		background: url(../images/movie-cover.jpg) no-repeat center/cover;
+		height: 315px;
+		width: 200px;
+		top: 0;
+		right: 40px;
+		display: block;
+	}
+	
+	.movieForm label {
+		grid-column: 1/2;
+	}
+	
+	.movieForm input, .movieForm select {
+		grid-column: 2/3;
+	}
+	
+	.movieForm textarea {
+		grid-column: 2/5;
+	}
+	
+	.movieForm input[type*="submit"] {
+		grid-column: 4/5;
+		width: fit-content;
+		justify-self: end;
+		padding: 2px 5px;
 	}
 
 }

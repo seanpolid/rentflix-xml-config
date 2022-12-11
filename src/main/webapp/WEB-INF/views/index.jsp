@@ -15,13 +15,16 @@
 		<header>
 			<nav class="homeNav">
 				<ul>
-					<li><a href="#">Browse</a></li>
+					<li><a href="./browse">Browse</a></li>
 					<c:choose>
 						<c:when test="${customer.id != null}">
 							<c:if test="${customer.id != -1}">
 								<li><a href="#">Checkout</a></li>
+								<li><a href="#" class="customer ${customer.profileImg}"></a>
 							</c:if>				
-							<li><a href="#" class="customer ${customer.profileImg}"></a>
+							<c:if test="${customer.id == -1}">
+								<li><a href="#" class="customer ${customer.profileImg} admin"></a>
+							</c:if>
 						</c:when>
 						<c:otherwise>
 							<li><a href="./login">Login</a></li>
@@ -41,5 +44,6 @@
 			<p>Created by: Sean Polidori</p>
 		</footer>
 	</div>
+	<script src="./resources/js/user-nav.js"></script>
 </body>
 </html>
