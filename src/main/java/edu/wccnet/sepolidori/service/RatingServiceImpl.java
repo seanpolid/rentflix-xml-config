@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import edu.wccnet.sepolidori.entity.Rating;
+import edu.wccnet.sepolidori.exception_handling.RatingNotFoundException;
 
 public class RatingServiceImpl implements RatingService {
 	
@@ -17,7 +18,11 @@ public class RatingServiceImpl implements RatingService {
 	@Override
 	@Transactional
 	public Rating getRating(int ratingId) {
-		return ratingService.getRating(ratingId);
+		Rating rating = ratingService.getRating(ratingId);
+		if (rating == null) {
+			throw new RatingNotFoundException("Rating " + ratingId + " not found.");
+		}
+		return rating;
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import edu.wccnet.sepolidori.entity.InvoiceMovie;
+import edu.wccnet.sepolidori.exception_handling.InvoiceMovieNotFoundException;
 
 public class InvoiceMovieServiceImpl implements InvoiceMovieService {
 	
@@ -17,7 +18,11 @@ public class InvoiceMovieServiceImpl implements InvoiceMovieService {
 	@Override
 	@Transactional
 	public InvoiceMovie getInvoiceMovie(int invoiceMovieId) {
-		return invoiceMovieService.getInvoiceMovie(invoiceMovieId);
+		InvoiceMovie invoiceMovie = invoiceMovieService.getInvoiceMovie(invoiceMovieId);
+		if (invoiceMovie == null) {
+			throw new InvoiceMovieNotFoundException("Invoice movie " + invoiceMovieId + " not found.");
+		}
+		return invoiceMovie;
 	}
 
 	@Override
