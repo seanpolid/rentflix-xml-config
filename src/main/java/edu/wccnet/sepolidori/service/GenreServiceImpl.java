@@ -6,22 +6,23 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import edu.wccnet.sepolidori.dao.GenreDAO;
 import edu.wccnet.sepolidori.entity.Genre;
 import edu.wccnet.sepolidori.exception_handling.GenreNotFoundException;
 
 @Service
 public class GenreServiceImpl implements GenreService {
 	
-	private final GenreService genreService;
+	private final GenreDAO genreDAO;
 	
-	public GenreServiceImpl(GenreService genreService) {
-		this.genreService = genreService;
+	public GenreServiceImpl(GenreDAO genreDAO) {
+		this.genreDAO = genreDAO;
 	}
 	
 	@Override
 	@Transactional
 	public Genre getGenre(int genreId) {
-		Genre genre = genreService.getGenre(genreId);
+		Genre genre = genreDAO.getGenre(genreId);
 		if (genre == null) {
 			throw new GenreNotFoundException("Genre " + genreId + " not found.");
 		}
@@ -31,19 +32,19 @@ public class GenreServiceImpl implements GenreService {
 	@Override
 	@Transactional
 	public List<Genre> getGenres() {
-		return genreService.getGenres();
+		return genreDAO.getGenres();
 	}
 
 	@Override
 	@Transactional
 	public void saveGenre(Genre genre) {
-		genreService.saveGenre(genre);
+		genreDAO.saveGenre(genre);
 	}
 
 	@Override
 	@Transactional
 	public void deleteGenre(int genreId) {
-		genreService.deleteGenre(genreId);
+		genreDAO.deleteGenre(genreId);
 	}
 
 }

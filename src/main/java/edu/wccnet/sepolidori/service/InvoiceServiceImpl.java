@@ -6,22 +6,23 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import edu.wccnet.sepolidori.dao.InvoiceDAO;
 import edu.wccnet.sepolidori.entity.Invoice;
 import edu.wccnet.sepolidori.exception_handling.InvoiceNotFoundException;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 	
-	private final InvoiceService invoiceService;
+	private final InvoiceDAO invoiceDAO;
 	
-	public InvoiceServiceImpl(InvoiceService invoiceService) {
-		this.invoiceService = invoiceService;
+	public InvoiceServiceImpl(InvoiceDAO invoiceDAO) {
+		this.invoiceDAO = invoiceDAO;
 	}
 	
 	@Override
 	@Transactional
 	public Invoice getInvoice(int invoiceId) {
-		Invoice invoice = invoiceService.getInvoice(invoiceId);
+		Invoice invoice = invoiceDAO.getInvoice(invoiceId);
 		if (invoice == null) {
 			throw new InvoiceNotFoundException("Invoice " + invoiceId + " not found.");
 		}
@@ -31,19 +32,19 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Override
 	@Transactional
 	public List<Invoice> getInvoices() {
-		return invoiceService.getInvoices();
+		return invoiceDAO.getInvoices();
 	}
 
 	@Override
 	@Transactional
 	public List<Invoice> getInvoices(int customerId) {
-		return invoiceService.getInvoices(customerId);
+		return invoiceDAO.getInvoices(customerId);
 	}
 
 	@Override
 	@Transactional
 	public void saveInvoice(Invoice invoice) {
-		invoiceService.saveInvoice(invoice);
+		invoiceDAO.saveInvoice(invoice);
 	}
 
 }
