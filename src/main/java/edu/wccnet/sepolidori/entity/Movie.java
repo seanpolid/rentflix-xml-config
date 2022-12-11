@@ -1,7 +1,9 @@
 package edu.wccnet.sepolidori.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="movie")
@@ -33,7 +37,7 @@ public class Movie {
 	private int yearMade;
 	
 	@Column(name="release_date")
-	private LocalDateTime releaseDate;
+	private LocalDate releaseDate;
 	
 	@Column(name="total_copies")
 	private int totalCopies;
@@ -87,12 +91,13 @@ public class Movie {
 		this.yearMade = yearMade;
 	}
 
-	public LocalDateTime getReleaseDate() {
+	public LocalDate getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(LocalDateTime releaseDate) {
-		this.releaseDate = releaseDate;
+	public void setReleaseDate(String releaseDate) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		this.releaseDate = LocalDate.parse(releaseDate);
 	}
 
 	public int getTotalCopies() {
@@ -149,6 +154,13 @@ public class Movie {
 	
 	public void removeInvoiceMovie(InvoiceMovie invoiceMovie) {
 		this.invoiceMovies.remove(invoiceMovie);
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", name=" + name + ", description=" + description + ", yearMade=" + yearMade
+				+ ", releaseDate=" + releaseDate + ", totalCopies=" + totalCopies + ", cost=" + cost + ", length="
+				+ length + ", rating=" + rating + ", genre=" + genre + "]";
 	}
 	
 }
