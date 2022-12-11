@@ -114,7 +114,7 @@
 	.users {
 		list-style: none;
 		display: grid;
-		gap: 50px;
+		gap: 50px 75px;
 		grid-template-columns: repeat(3, 1fr);
 		width: fit-content;
 		padding: 0;
@@ -141,7 +141,7 @@
 
 }
 
-@media screen and (max-width: 1058px) {
+@media screen and (max-width: 1115px) {
 	/* Login */
 	.users {
 		list-style: none;
