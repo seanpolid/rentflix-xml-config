@@ -21,10 +21,10 @@ public class GenreServiceImpl implements GenreService {
 	
 	@Override
 	@Transactional
-	public Genre getGenre(int genreId) {
-		Genre genre = genreDAO.getGenre(genreId);
+	public Genre getGenre(String genreName) {
+		Genre genre = genreDAO.getGenre(genreName);
 		if (genre == null) {
-			throw new GenreNotFoundException("Genre " + genreId + " not found.");
+			throw new GenreNotFoundException("Genre " + genreName + " not found.");
 		}
 		return genre;
 	}

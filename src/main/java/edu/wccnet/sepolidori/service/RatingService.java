@@ -6,7 +6,7 @@ import edu.wccnet.sepolidori.entity.Rating;
 
 public interface RatingService {
 	
-	public Rating getRating(int ratingId);
+	public Rating getRating(String ratingName);
 	public List<Rating> getRatings();
 	public void saveRatings(List<Rating> ratings);
 	public void deleteRating(int ratingId);

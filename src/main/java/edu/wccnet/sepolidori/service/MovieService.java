@@ -10,5 +10,6 @@ public interface MovieService {
 	public List<Movie> getMovies();
 	public void saveMovie(Movie movie);
 	public void deleteMovie(int movieId);
+	public Movie prepMovie(Movie movie);
 	
 }

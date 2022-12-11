@@ -6,7 +6,7 @@ import edu.wccnet.sepolidori.entity.Genre;
 
 public interface GenreDAO {
 	
-	public Genre getGenre(int genreId);
+	public Genre getGenre(String genreName);
 	public List<Genre> getGenres();
 	public void saveGenre(Genre genre);
 	public void deleteGenre(int genreId);

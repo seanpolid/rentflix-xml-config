@@ -2,6 +2,8 @@ package edu.wccnet.sepolidori.dao;
 
 import java.util.List;
 
+import org.hibernate.query.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -18,9 +20,11 @@ public class RatingDAOImpl implements RatingDAO {
 	}
 	
 	@Override
-	public Rating getRating(int ratingId) {
+	public Rating getRating(String ratingName) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Rating.class, ratingId);
+		Query<Rating> query = session.createQuery("FROM Rating r WHERE r.name = :name", Rating.class);
+		query.setParameter("name", ratingName);
+		return query.getSingleResult();
 	}
 
 	@Override

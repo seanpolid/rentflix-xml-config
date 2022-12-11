@@ -21,10 +21,10 @@ public class RatingServiceImpl implements RatingService {
 	
 	@Override
 	@Transactional
-	public Rating getRating(int ratingId) {
-		Rating rating = ratingDAO.getRating(ratingId);
+	public Rating getRating(String ratingName) {
+		Rating rating = ratingDAO.getRating(ratingName);
 		if (rating == null) {
-			throw new RatingNotFoundException("Rating " + ratingId + " not found.");
+			throw new RatingNotFoundException("Rating " + ratingName + " not found.");
 		}
 		return rating;
 	}

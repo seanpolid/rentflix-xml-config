@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.Genre;
@@ -18,9 +19,11 @@ public class GenreDAOImpl implements GenreDAO {
 	}
 	
 	@Override
-	public Genre getGenre(int genreId) {
+	public Genre getGenre(String genreName) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Genre.class, genreId);
+		Query<Genre> query = session.createQuery("FROM Genre g WHERE g.name = :name", Genre.class);
+		query.setParameter("name", genreName);
+		return query.getSingleResult();
 	}
 
 	@Override

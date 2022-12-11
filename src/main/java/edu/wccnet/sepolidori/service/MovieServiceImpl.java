@@ -14,9 +14,13 @@ import edu.wccnet.sepolidori.exception_handling.MovieNotFoundException;
 public class MovieServiceImpl implements MovieService {
 	
 	private final MovieDAO movieDAO;
+	private final GenreService genreService;
+	private final RatingService ratingService;
 	
-	public MovieServiceImpl(MovieDAO movieDAO) {
+	public MovieServiceImpl(MovieDAO movieDAO, RatingService ratingService, GenreService genreService) {
 		this.movieDAO = movieDAO;
+		this.genreService = genreService;
+		this.ratingService = ratingService;
 	}
 	
 	@Override
@@ -45,6 +49,21 @@ public class MovieServiceImpl implements MovieService {
 	@Transactional
 	public void deleteMovie(int movieId) {
 		movieDAO.deleteMovie(movieId);
+	}
+
+	@Override
+	public Movie prepMovie(Movie movie) {
+		System.out.println("getting rating");
+		System.out.println(movie.getRating().getName());
+		String ratingName = movie.getRating().getName();
+		movie.setRating(ratingService.getRating(ratingName));
+		
+		System.out.println("getting genre");
+		String genreName = movie.getGenre().getName();
+		movie.setGenre(genreService.getGenre(genreName));
+		
+		movie.setId(0);
+		return movie;
 	}
 
 }
