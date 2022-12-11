@@ -22,26 +22,23 @@
 					<li><a href="./login" class="selected">Login</a></li>
 					<li><a href="#">Browse</a></li>
 					<li><a href="#">Checkout</a></li>
+					<!--<li><a href="#" class="user"></a>-->
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<ul class="users">
 				<li>
-					<a href="#" class="userPic"></a>
+					<a href="#" class="userPic pic1"></a>
 					<a href="#" class="userName">Admin</a>
 				</li>
 				<li>
-					<a href="#" class="userPic"></a>
+					<a href="#" class="userPic pic2"></a>
 					<a href="#" class="userName">SeanP</a>
 				</li>
 				<li>
-					<a href="#" class="userPic"></a>
-					<a href="#" class="userName">Konnor</a>
-				</li>
-				<li>
-					<a href="#" class="userPic"></a>
-					<a href="#" class="userName">John</a>
+					<a href="#" class="userPic addUser"></a>
+					<a href="#" class="userName">Add user</a>
 				</li>
 			</ul>
 		</main>
