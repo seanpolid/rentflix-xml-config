@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Rating {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy="rating")
+	@OneToMany(mappedBy="rating", fetch=FetchType.LAZY)
 	public List<Movie> movies = new ArrayList<Movie>();
 
 	public int getId() {
@@ -55,6 +56,11 @@ public class Rating {
 	
 	public void removeMovie(Movie movie) {
 		this.movies.remove(movie);
+	}
+
+	@Override
+	public String toString() {
+		return "Rating [id=" + id + ", name=" + name + "]";
 	}
 	
 }
