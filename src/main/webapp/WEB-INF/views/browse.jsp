@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>RentFlix :: Library</title>
+	<title>RentFlix :: Browse</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet" />
@@ -19,20 +19,31 @@
 			<nav>
 				<a href="./home">RentFlix</a>
 				<ul>
-					<li><a href="#">Browse</a></li>
-					<c:if test="${customer.id != -1}">
-						<li><a href="#">Checkout</a></li>
-					</c:if>				
-					<li><a href="#" class="customer ${customer.profileImg}"></a>
+					<li><a href="./browse" class="selected">Browse</a></li>
+					<c:choose>
+						<c:when test="${customer.id != null}">
+							<c:if test="${customer.id != -1}">
+								<li><a href="#">Checkout</a></li>
+								<li><a href="#" class="customer ${customer.profileImg}"></a>
+							</c:if>				
+							<c:if test="${customer.id == -1}">
+								<li><a href="#" class="customer ${customer.profileImg} admin"></a>
+							</c:if>
+						</c:when>
+						<c:otherwise>
+							<li><a href="./login">Login</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</nav>
 		</header>
 		<main>
-
+			
 		</main>
 		<footer>
 			<p>Created by: Sean Polidori</p>
 		</footer>
 	</div>
+	<script src="./resources/js/user-nav.js"></script>
 </body>
 </html>
