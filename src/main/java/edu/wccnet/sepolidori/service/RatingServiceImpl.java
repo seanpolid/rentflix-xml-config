@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Service;
+
 import edu.wccnet.sepolidori.entity.Rating;
 import edu.wccnet.sepolidori.exception_handling.RatingNotFoundException;
 
+@Service
 public class RatingServiceImpl implements RatingService {
 	
 	private final RatingService ratingService;

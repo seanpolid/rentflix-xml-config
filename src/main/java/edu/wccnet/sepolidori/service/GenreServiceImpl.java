@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Service;
+
 import edu.wccnet.sepolidori.entity.Genre;
 import edu.wccnet.sepolidori.exception_handling.GenreNotFoundException;
 
+@Service
 public class GenreServiceImpl implements GenreService {
 	
 	private final GenreService genreService;

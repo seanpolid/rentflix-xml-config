@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.InvoiceMovie;
 
+@Repository
 public class InvoiceMovieDAOImpl implements InvoiceMovieDAO {
 	
 	private final SessionFactory sessionFactory;

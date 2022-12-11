@@ -5,9 +5,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.Invoice;
 
+@Repository
 public class InvoiceDAOImpl implements InvoiceDAO {
 	
 	private final SessionFactory sessionFactory;

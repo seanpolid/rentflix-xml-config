@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Service;
+
 import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.exception_handling.MovieNotFoundException;
 
+@Service
 public class MovieServiceImpl implements MovieService {
 	
 	private final MovieService movieService;

@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Service;
+
 import edu.wccnet.sepolidori.entity.Invoice;
 import edu.wccnet.sepolidori.exception_handling.InvoiceNotFoundException;
 
+@Service
 public class InvoiceServiceImpl implements InvoiceService {
 	
 	private final InvoiceService invoiceService;

@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.Rating;
 
+@Repository
 public class RatingDAOImpl implements RatingDAO {
 	
 	private final SessionFactory sessionFactory;

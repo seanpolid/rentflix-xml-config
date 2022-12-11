@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.Genre;
 
+@Repository
 public class GenreDAOImpl implements GenreDAO {
 	
 	private final SessionFactory sessionFactory;
