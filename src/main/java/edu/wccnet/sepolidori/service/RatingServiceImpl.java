@@ -34,11 +34,13 @@ public class RatingServiceImpl implements RatingService {
 	public List<Rating> getRatings() {
 		return ratingDAO.getRatings();
 	}
-
+	
 	@Override
 	@Transactional
-	public void saveRating(Rating rating) {
-		ratingDAO.saveRating(rating);
+	public void saveRatings(List<Rating> ratings) {
+		for (Rating rating : ratings) {
+			ratingDAO.saveRating(rating);
+		}
 	}
 
 	@Override

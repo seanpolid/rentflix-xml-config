@@ -8,7 +8,7 @@ public interface RatingService {
 	
 	public Rating getRating(int ratingId);
 	public List<Rating> getRatings();
-	public void saveRating(Rating rating);
+	public void saveRatings(List<Rating> ratings);
 	public void deleteRating(int ratingId);
 	
 }
