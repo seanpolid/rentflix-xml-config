@@ -8,6 +8,6 @@ public interface InvoiceMovieDAO {
 	
 	public InvoiceMovie getInvoiceMovie(int invoiceMovieId);
 	public List<InvoiceMovie> getInvoiceMovies();
-	public List<InvoiceMovie> getInvoiceMovies(int InvoiceId);
 	public void saveInvoiceMovie(InvoiceMovie invoiceMovie);
+	
 }
