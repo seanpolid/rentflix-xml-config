@@ -56,4 +56,10 @@ public class Genre {
 	public void removeMovie(Movie movie) {
 		this.movies.remove(movie);
 	}
+
+	@Override
+	public String toString() {
+		return "Genre [id=" + id + ", name=" + name + "]";
+	}
+	
 }
