@@ -37,8 +37,10 @@ public class GenreServiceImpl implements GenreService {
 
 	@Override
 	@Transactional
-	public void saveGenre(Genre genre) {
-		genreDAO.saveGenre(genre);
+	public void saveGenres(List<Genre> genres) {
+		for (Genre genre : genres) {
+			genreDAO.saveGenre(genre);
+		}
 	}
 
 	@Override

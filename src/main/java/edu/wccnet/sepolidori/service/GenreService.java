@@ -8,7 +8,8 @@ public interface GenreService {
 		
 	public Genre getGenre(int genreId);
 	public List<Genre> getGenres();
-	public void saveGenre(Genre genre);
+	public void saveGenres(List<Genre> genres);
 	public void deleteGenre(int genreId);
+	
 	
 }
