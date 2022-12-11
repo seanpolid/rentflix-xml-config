@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -14,9 +15,18 @@
 		<header>
 			<nav class="homeNav">
 				<ul>
-					<li><a href="./login">Login</a></li>
 					<li><a href="#">Browse</a></li>
-					<li><a href="#">Checkout</a></li>
+					<c:choose>
+						<c:when test="${customer.id != null}">
+							<c:if test="${customer.id != -1}">
+								<li><a href="#">Checkout</a></li>
+							</c:if>				
+							<li><a href="#" class="customer ${customer.profileImg}"></a>
+						</c:when>
+						<c:otherwise>
+							<li><a href="./login">Login</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</nav>
 		</header>

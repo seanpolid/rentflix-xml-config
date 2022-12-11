@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>RentFlix :: Login</title>
+	<title>RentFlix :: Library</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet" />
@@ -19,29 +19,16 @@
 			<nav>
 				<a href="./home">RentFlix</a>
 				<ul>
-					<li><a href="./login" class="selected">Login</a></li>
 					<li><a href="#">Browse</a></li>
+					<c:if test="${customer.id != -1}">
+						<li><a href="#">Checkout</a></li>
+					</c:if>				
+					<li><a href="#" class="customer ${customer.profileImg}"></a>
 				</ul>
 			</nav>
 		</header>
 		<main>
-			<ul class="customers">
-				<li>
-					<a href="./loginCustomer?customerId=-1" class="customerPic astronaught"></a>
-					<a href="./loginCustomer?customerId=-1" class="customerName">Admin</a>
-				</li>
-				<c:forEach var="customer" items="${customers}">
-					<li>
-						<c:set var="customerLoginLink" value="./loginCustomer?customerId=${customer.id}" />
-						<a href="${customerLoginLink}" class="customerPic ${customer.profileImg}"></a>
-						<a href="${customerLoginLink}" class="customerName">${customer.firstName}</a>
-					</li>
-				</c:forEach>
-				<li>
-					<a href="#" class="customerPic addCustomer"></a>
-					<a href="#" class="customerName">Add Customer</a>
-				</li>
-			</ul>
+
 		</main>
 		<footer>
 			<p>Created by: Sean Polidori</p>

@@ -112,7 +112,7 @@
 	}
 	
 	/* Login */
-	.users {
+	.customers {
 		list-style: none;
 		display: grid;
 		gap: 50px 75px;
@@ -122,7 +122,7 @@
 		margin: 0;
 	}
 	
-	.userName {
+	.customerName {
 		display: block;
 		text-align: center;
 		text-transform: uppercase;
@@ -132,38 +132,49 @@
 		margin: 0 auto;
 	}
 	
-	.userPic {
+	.customerPic {
 		height: 300px; 
 		width: 300px; 
 		display: block;
 		border-radius: 5px;
 	}
 	
-	.user {
+	.customer {
 		height: 50px;
 		width: 50px;
-		background: url(../images/astronaught.jpg) no-repeat center/cover;
 		display: block;
 		border-radius: 5px;
 	}
 	
-	.pic1 {
+	.astronaught {
 		background: url(../images/astronaught.jpg) no-repeat center/cover;
 	}
 	
-	.pic2 {
+	.astronaught2 {
 		background: url(../images/astronaught2.jpg) no-repeat center/cover;
 	}
 	
-	.addUser {
-		background: url(../images/add-user.png) no-repeat center/cover;
+	.cat {
+		background: url(../images/cat.jpg) no-repeat center/cover;
+	}
+	
+	.donut {
+		background: url(../images/donut.jpg) no-repeat center/cover;
+	}
+	
+	.monkey {
+		background: url(../images/monkey.jpg) no-repeat center/cover;
+	}
+	
+	.addCustomer {
+		background: url(../images/add-customer.png) no-repeat center/cover;
 	}
 
 }
 
 @media screen and (max-width: 1115px) {
 	/* Login */
-	.users {
+	.customers {
 		list-style: none;
 		display: grid;
 		gap: 50px;
@@ -171,7 +182,7 @@
 		width: fit-content;
 	}
 	
-	.userPic {
+	.customerPic {
 		height: 250px; 
 		width: 250px; 
 	}
@@ -179,7 +190,7 @@
 
 @media screen and (max-width: 910px) {
 	/* Login */
-	.users {
+	.customers {
 		list-style: none;
 		display: grid;
 		gap: 50px;
@@ -187,7 +198,7 @@
 		width: fit-content;
 	}
 	
-	.userPic {
+	.customerPic {
 		height: 250px; 
 		width: 250px; 
 		display: block;
