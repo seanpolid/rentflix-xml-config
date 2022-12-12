@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.wccnet.sepolidori.entity.Customer;
 import edu.wccnet.sepolidori.entity.Movie;
+import edu.wccnet.sepolidori.service.CartService;
 import edu.wccnet.sepolidori.service.CustomerService;
 import edu.wccnet.sepolidori.service.GenreService;
 import edu.wccnet.sepolidori.service.LoggedInUserService;
@@ -28,19 +29,21 @@ public class MainController {
 	private final GenreService genreService;
 	private final RatingService ratingService;
 	private final MovieService movieService;
+	private final CartService cartService;
 	
 	public MainController(CustomerService customerService, 
 						LoggedInUserService loggedInUserService, 
 						LoginProcessor loginProcessor, 
 						RatingService ratingService, 
 						GenreService genreService, 
-						MovieService movieService) {
+						MovieService movieService, CartService cartService) {
 		this.loginProcessor = loginProcessor;
 		this.customerService = customerService;
 		this.loggedInUserService = loggedInUserService;
 		this.genreService = genreService;
 		this.ratingService = ratingService;
 		this.movieService = movieService;
+		this.cartService = cartService;
 	}
 	
 	@RequestMapping({"/home", "/"})
@@ -85,6 +88,13 @@ public class MainController {
 		Movie preppedMovie = movieService.prepMovie(movie);
 		movieService.saveMovie(preppedMovie);
 		return "redirect:/browse";
+	}
+	
+	@RequestMapping("/checkout")
+	public String checkout(Model model) {
+		model.addAttribute("customer", loggedInUserService.getCustomer());
+		model.addAttribute("movies", cartService.getMovies());
+		return "checkout";
 	}
 	
 	@RequestMapping("/logout")
