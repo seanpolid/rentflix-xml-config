@@ -6,6 +6,7 @@ import edu.wccnet.sepolidori.entity.Movie;
 
 public interface MovieService {
 	
+	public Movie getMovie(int movieId);
 	public Movie getMovie(String movieName);
 	public List<Movie> getMovies();
 	public void saveMovie(Movie movie);

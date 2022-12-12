@@ -25,6 +25,16 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Override
 	@Transactional
+	public Movie getMovie(int movieId) {
+		Movie movie = movieDAO.getMovie(movieId);
+		if (movie == null) {
+			throw new MovieNotFoundException("Movie " + movieId + " not found.");
+		}
+		return movie;
+	}
+	
+	@Override
+	@Transactional
 	public Movie getMovie(String movieName) {
 		Movie movie = movieDAO.getMovie(movieName);
 		if (movie == null) {

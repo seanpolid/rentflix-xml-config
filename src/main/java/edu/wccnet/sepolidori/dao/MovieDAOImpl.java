@@ -19,6 +19,12 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 	
 	@Override
+	public Movie getMovie(int movieId) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Movie.class, movieId);
+	}
+	
+	@Override
 	public Movie getMovie(String movieName) {
 		Session session = sessionFactory.getCurrentSession();
 		Query<Movie> query = session.createQuery("FROM Movie m WHERE m.name = :name", Movie.class);
