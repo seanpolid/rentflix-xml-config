@@ -42,7 +42,7 @@
 				<input type="search" name="search" /> 
 				<input type="submit" value="Search" />
 			</div>
-			<ul>
+			<ul class="movieContainer">
 				<c:forEach var="movie" items="${movies}">
 				<li>
 					<a href="#" data-name="${movie.name}" class="movieCover"></a>
@@ -56,6 +56,7 @@
 		</footer>
 	</div>
 	<script src="./resources/js/user-nav.js"></script>
-	<script src="./resources/js/browse.js"></script>
+	<script src="./resources/js/movie-info.js"></script>
+	<script src="./resources/js/search.js"></script>
 </body>
 </html>
