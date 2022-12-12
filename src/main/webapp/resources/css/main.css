@@ -221,19 +221,21 @@
 	.movieCover {
 		position: absolute;
 		background: url(../images/movie-cover.jpg) no-repeat center/cover;
-		height: 315px;
-		width: 200px;
+		height: 373px;
+		width: 260px;
 		top: 0;
-		right: 40px;
+		right: 20px;
 		display: block;
 	}
 	
 	.movieForm label {
 		grid-column: 1/2;
+		font-size: 18px;
 	}
 	
 	.movieForm input, .movieForm select {
 		grid-column: 2/3;
+		padding: 5px;
 	}
 	
 	.movieForm textarea {
@@ -246,6 +248,41 @@
 		justify-self: end;
 		padding: 2px 5px;
 	}
+	
+	/* Browse */
+	.browse .search {
+		width: 870px;
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+	}
+	
+	.browse input[type*="search"] {
+		font-size: 30px;
+		width: 97%;
+	}
+	
+	.browse input[type*="submit"] {
+		padding: 0 10px;
+	}
+	
+	.browse ul {
+		display: grid;
+		justify-content: space-between;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 40px;
+		padding: 0;
+	}
+	.browse li {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 5px;
+	}
+	
+	.browse .movieCover {
+		position: static;
+	}
 
 }
 
@@ -257,11 +294,6 @@
 		gap: 50px;
 		grid-template-columns: repeat(3, 1fr);
 		width: fit-content;
-	}
-	
-	.customerPic {
-		height: 250px; 
-		width: 250px; 
 	}
 }
 
@@ -279,6 +311,14 @@
 		height: 250px; 
 		width: 250px; 
 		display: block;
+	}
+	
+	.browse .search {
+		width: 700px;
+	}
+	.browse .movieCover {
+		height: 300px;
+		width: 200px;		
 	}
 }
 

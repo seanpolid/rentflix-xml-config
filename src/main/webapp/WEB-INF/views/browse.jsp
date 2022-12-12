@@ -37,13 +37,35 @@
 				</ul>
 			</nav>
 		</header>
-		<main>
-			
+		<main class="browse">
+			<div class="search">
+				<input type="search" name="search" /> 
+				<input type="submit" value="Search" />
+			</div>
+			<ul>
+				<c:forEach var="movie" items="${movies}">
+				<li>
+					<a href="#" class="movieCover"></a>
+					<a href="#" class="movieName">${movie.name}</a>
+					<!--  
+					<input type="hidden" name="${movie.name}-yearMade" value="${movie.yearMade}" />
+					<input type="hidden" name="${movie.name}-description" value="${movie.description}" />
+					<input type="hidden" name="${movie.name}-releaseDate" value="${movie.releaseDate}" />
+					<input type="hidden" name="${movie.name}-totalCopies" value="${movie.totalCopies}" />
+					<input type="hidden" name="${movie.name}-cost" value="${movie.cost}" />
+					<input type="hidden" name="${movie.name}-length}" value="${movie.length}" />
+					<input type="hidden" name="${movie.name}-rating" value="${movie.rating}" />
+					<input type="hidden" name="${movie.genre}-rating" value="${movie.genre}" />
+					-->
+				</li>
+			</c:forEach>
+			</ul>
 		</main>
 		<footer>
 			<p>Created by: Sean Polidori</p>
 		</footer>
 	</div>
 	<script src="./resources/js/user-nav.js"></script>
+	<script src="./resources/js/browse.js"></script>
 </body>
 </html>
