@@ -71,8 +71,8 @@ const browse = {
         browse.getMovieInfo(movieName).then(result => {
             const isAdmin = browse.isAdmin()
             const isCustomer = browse.isCustomer();
-            const isAvailable = browse.isMovieAvailable(result);
-            let container = browse.createContainer(result, movieName, isAdmin, isCustomer, isAvailable);
+            const numRemainingCopies = browse.getNumRemainingCopies(result);
+            let container = browse.createContainer(result, movieName, isAdmin, isCustomer, numRemainingCopies);
             container.classList.add("movieInfo");
             browse.main.append(container);
         })
@@ -94,29 +94,24 @@ const browse = {
         }
     },
 
-    isMovieAvailable : function(result) {
-        let isMovieAvailable = false;
+    getNumRemainingCopies : function(result) {
         const movieId = result["id"];
-        const totalCopies = result["totalCopies"];
-        if (totalCopies > 0) {
-            let remainingCopies = totalCopies;
+        let remainingCopies = result["totalCopies"];
+        if (remainingCopies > 0) {
             browse.getInvoiceMovies(movieId)
-                .then(result => {
-                    for (const invoice of result) {
-                        if (invoice["returnDate"] != null) {
-                            remainingCopies -= 1;
-                        }
+            .then(result => {
+                for (const invoice of result) {
+                    if (invoice["returnDate"] != null) {
+                        remainingCopies -= 1;
                     }
-                });
-            if (remainingCopies) {
-                isMovieAvailable = true;
-            };
+                }
+            });
         }
-        return isMovieAvailable;
+        return remainingCopies;
     },
 
     getInvoiceMovies : async function(movieId) {
-        const response = await fetch("./api/invoicemovies/" + movieId) 
+        const response = await fetch("./api/invoicemovies/" + movieId);
         return await response.json();
     },
 
@@ -125,11 +120,13 @@ const browse = {
         return await response.json();
     },
 
-    createContainer : function(result, movieName, isAdmin, isCustomer, isAvailable) {
+    createContainer : function(result, movieName, isAdmin, isCustomer, numRemainingCopies) {
+        console.log(numRemainingCopies);
+        const remainingCopies = document.createTextNode("# Remaining Copies: " + numRemainingCopies);
         const description = document.createTextNode("Description:\n" + result["description"]);
         const yearMade = document.createTextNode("Year made: " + result["yearMade"]);
         const releaseDate = document.createTextNode("Release date: " + result["releaseDate"]);
-        const cost = document.createTextNode("Cost: " + result["cost"]);
+        const cost = document.createTextNode("Cost: $" + result["cost"]);
         const length = document.createTextNode("Length (minutes): " + result["length"]);
         const rating = document.createTextNode("Rating: " + result["rating"]["name"]);
         const genre = document.createTextNode("Genre: " + result["genre"]["name"]);
@@ -137,6 +134,7 @@ const browse = {
         let container = document.createElement("ul");
         
         let movieNameContainer = document.createElement("li");
+        let remainingCopiesContainer = document.createElement("li");
         let descriptionContainer = document.createElement("li");
         let yearMadeContainer = document.createElement("li");
         let releaseDateContainer = document.createElement("li");
@@ -151,7 +149,7 @@ const browse = {
             cartButton = document.createElement("button");
             cartButton.classList.add("cartButton");
 
-            if (isAvailable) {
+            if (numRemainingCopies > 0) {
                 cartButton.appendChild(document.createTextNode("Add to cart"));
                 cartButton.addEventListener("click", browse.addToCart, false);
             }  else {
@@ -161,6 +159,7 @@ const browse = {
         }
 
         movieNameContainer.appendChild(document.createTextNode(movieName));
+        remainingCopiesContainer.appendChild(remainingCopies);
         descriptionContainer.appendChild(description);
         yearMadeContainer.appendChild(yearMade);
         releaseDateContainer.appendChild(releaseDate);
@@ -177,6 +176,9 @@ const browse = {
             ratingContainer, lengthContainer, costContainer, descriptionContainer);
         if (cartButton) {
             container.append(cartButton);
+        }
+        if (isAdmin) {
+            container.insertBefore(remainingCopiesContainer, costContainer);
         }
         return container;
     },
