@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.wccnet.sepolidori.entity.Customer;
 import edu.wccnet.sepolidori.entity.Genre;
+import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.entity.Rating;
 import edu.wccnet.sepolidori.service.CustomerService;
 import edu.wccnet.sepolidori.service.GenreService;
@@ -86,4 +87,8 @@ public class APIController {
 		genreService.saveGenres(genres);
 	}
 	
+	@GetMapping("/movies")
+	public List<Movie> getMovies() {
+		return movieService.getMovies();
+	}
 }
