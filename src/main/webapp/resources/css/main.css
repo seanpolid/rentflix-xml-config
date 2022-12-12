@@ -129,17 +129,6 @@
 		text-align: center;
 		font-size: 120px;
 		text-transform: uppercase;
-		animation: fadeIn ease 5s;
-		animation-iteration-count: 1;
-	}
-	
-	@keyframes fadeIn {
-		0% {
-			opacity: 0;
-		} 
-		100% {
-			opacity: 1;
-		}
 	}
 	
 	.signUp input {
@@ -297,9 +286,9 @@
 	.browse .movieInfo {
 		position: fixed;
 		top: 20vh;
-		background: #121212;
+		background: black;
 		border-radius: 5px;
-		border: 1px solid #3e2d3e;
+		border: 2px solid #3e2d3e;
 		display: flex;
 		flex-direction: column;
 		align-items: start;
@@ -307,13 +296,14 @@
 		width: 800px;
 		padding: 20px;
 		height: 400px;
+		font-family: cursive;
 	}
 	
 	.browse .movieInfo button {
 		position: absolute;
 		top: 5px;
 		right: 10px;
-		padding: 5px;
+		padding: 0 5px;
 		cursor: pointer;
 	}
 	
@@ -324,6 +314,7 @@
 		border: 0;
 		background: #fff;
 		color: black;
+		padding: 5px 10px;
 	}
 	
 	.browse .movieInfo .cartButton:hover {
