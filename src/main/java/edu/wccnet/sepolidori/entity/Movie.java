@@ -41,7 +41,7 @@ public class Movie {
 	private int yearMade;
 	
 	@Column(name="release_date")
-	private LocalDate releaseDate;
+	private String releaseDate;
 	
 	@Column(name="total_copies")
 	private int totalCopies;
@@ -97,12 +97,12 @@ public class Movie {
 	}
 
 	public String getReleaseDate() {
-		return releaseDate.toString();
+		return releaseDate;
 	}
 
 	public void setReleaseDate(String releaseDate) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		this.releaseDate = LocalDate.parse(releaseDate);
+		this.releaseDate = LocalDate.parse(releaseDate).toString();
 	}
 
 	public int getTotalCopies() {
