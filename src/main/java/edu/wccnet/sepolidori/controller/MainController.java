@@ -66,6 +66,7 @@ public class MainController {
 	@RequestMapping("/browse")
 	public String browse(Model model) {
 		model.addAttribute("customer", loggedInUserService.getCustomer());
+		model.addAttribute("movies", movieService.getMovies());
 		return "browse";
 	}
 	
