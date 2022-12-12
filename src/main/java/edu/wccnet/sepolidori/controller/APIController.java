@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.wccnet.sepolidori.entity.Customer;
 import edu.wccnet.sepolidori.entity.Genre;
+import edu.wccnet.sepolidori.entity.InvoiceMovie;
 import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.entity.Rating;
 import edu.wccnet.sepolidori.service.CustomerService;
@@ -96,4 +97,10 @@ public class APIController {
 	public Movie getMovie(@PathVariable String movieName) {
 		return movieService.getMovie(movieName);
 	}
+	
+	@GetMapping("/invoicemovies/{movieId}")
+	public List<InvoiceMovie> getInvoiceMovies(@PathVariable int movieId) {
+		return invoiceMovieService.getInvoiceMovies(movieId);
+	}
+
 }
