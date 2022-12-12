@@ -31,8 +31,8 @@ public class InvoiceMovieServiceImpl implements InvoiceMovieService {
 
 	@Override
 	@Transactional
-	public List<InvoiceMovie> getInvoiceMovies() {
-		return invoiceMovieDAO.getInvoiceMovies();
+	public List<InvoiceMovie> getInvoiceMovies(int movieId) {
+		return invoiceMovieDAO.getInvoiceMovies(movieId);
 	}
 
 	@Override

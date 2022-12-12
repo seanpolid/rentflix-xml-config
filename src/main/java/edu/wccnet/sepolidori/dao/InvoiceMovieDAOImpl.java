@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.InvoiceMovie;
@@ -24,9 +25,11 @@ public class InvoiceMovieDAOImpl implements InvoiceMovieDAO {
 	}
 
 	@Override
-	public List<InvoiceMovie> getInvoiceMovies() {
+	public List<InvoiceMovie> getInvoiceMovies(int movieId) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("FROM InvoiceMovie", InvoiceMovie.class).getResultList();
+		Query<InvoiceMovie> query = session.createQuery("FROM InvoiceMovie im WHERE im.movie.id = :movieId", InvoiceMovie.class);
+		query.setParameter("movieId", movieId);
+		return query.getResultList();
 	}
 
 	@Override
