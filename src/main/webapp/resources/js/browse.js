@@ -8,13 +8,15 @@ const browse = {
     movieList : document.querySelector(".browse ul"),
 
     init : function() {
-        this.submit.addEventListener("click", this.getRelevantMovies, false);
+        this.submit.addEventListener("click", this.filterMovies, false);
+        this.movieList.addEventListener("click", this.showMovieInfo, false);
+        this.movieList.addEventListener("click", event => {event.preventDefault()});
     },
 
-    getRelevantMovies : function() {
+    filterMovies : function() {
         const searchValue = browse.searchField.value.toLowerCase();
         if (searchValue !== "") {
-            browse.searchMovies(searchValue).then(ratings => {
+            browse.getRelevantMovies(searchValue).then(ratings => {
                 let relevantMovies = [];
                 for (let rating of ratings) {
                     relevantMovies.push(rating["name"]);
@@ -39,7 +41,7 @@ const browse = {
         
     },
 
-    searchMovies : async function(searchValue) {
+    getRelevantMovies : async function(searchValue) {
         let ratings = [];
         const response = await fetch("./api/movies");
         const movies = await response.json();
@@ -59,6 +61,63 @@ const browse = {
 			}
         }
         return ratings;
+    },
+
+    showMovieInfo : function(event) {
+        if (document.querySelector(".movieInfo")) {
+            document.querySelector(".movieInfo").remove();
+        }
+        const movieName = event.target.getAttribute("data-name");
+        browse.getMovieInfo(movieName).then(result => {
+            let container = browse.createContainer(result, movieName);
+            container.classList.add("movieInfo");
+            browse.main.append(container);
+        })
+    },
+
+    getMovieInfo : async function(movieName) {
+        const response = await fetch("./api/movies/" +  movieName);
+        return await response.json();
+    },
+
+    createContainer : function(result, movieName) {
+        const description = document.createTextNode("Description:\n" + result["description"]);
+        const yearMade = document.createTextNode("Year made: " + result["yearMade"]);
+        const releaseDate = document.createTextNode("Release date: " + result["releaseDate"]);
+        const cost = document.createTextNode("Cost: " + result["cost"]);
+        const totalCopies = result["totalCopies"];
+        const length = document.createTextNode("Length (minutes): " + result["length"]);
+        const rating = document.createTextNode("Rating: " + result["rating"]["name"]);
+        const genre = document.createTextNode("Genre: " + result["genre"]["name"]);
+
+        let container = document.createElement("ul");
+        
+        let movieNameContainer = document.createElement("li");
+        let descriptionContainer = document.createElement("li");
+        let yearMadeContainer = document.createElement("li");
+        let releaseDateContainer = document.createElement("li");
+        let costContainer = document.createElement("li");
+        let lengthContainer = document.createElement("li");
+        let ratingContainer = document.createElement("li");
+        let genreContainer = document.createElement("li"); 
+        let closeButton = document.createElement("button");
+
+        movieNameContainer.appendChild(document.createTextNode(movieName));
+        descriptionContainer.appendChild(description);
+        yearMadeContainer.appendChild(yearMade);
+        releaseDateContainer.appendChild(releaseDate);
+        costContainer.appendChild(cost);
+        lengthContainer.appendChild(length);
+        ratingContainer.appendChild(rating);
+        genreContainer.appendChild(genre);
+        closeButton.appendChild(document.createTextNode("X"));
+        closeButton.addEventListener("click", () => {
+            document.querySelector(".movieInfo").remove();
+        }, false);
+
+        container.append(closeButton, movieNameContainer, yearMadeContainer, releaseDateContainer, genreContainer, 
+            ratingContainer, lengthContainer, costContainer, descriptionContainer);
+        return container;
     }
 };
 
