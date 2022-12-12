@@ -23,7 +23,7 @@
 					<c:choose>
 						<c:when test="${customer.id != null}">
 							<c:if test="${customer.id != -1}">
-								<li><a href="#">Checkout</a></li>
+								<li><a href="./checkout" class="checkout">Checkout</a></li>
 								<li><a href="#" class="customer ${customer.profileImg}"></a>
 							</c:if>				
 							<c:if test="${customer.id == -1}">
