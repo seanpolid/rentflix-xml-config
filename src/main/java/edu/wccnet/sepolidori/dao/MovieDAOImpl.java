@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.wccnet.sepolidori.entity.Movie;
@@ -18,9 +19,11 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 	
 	@Override
-	public Movie getMovie(int movieId) {
+	public Movie getMovie(String movieName) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Movie.class, movieId);
+		Query<Movie> query = session.createQuery("FROM Movie m WHERE m.name = :name", Movie.class);
+		query.setParameter("name", movieName);
+		return query.getSingleResult();
 	}
 
 	@Override
