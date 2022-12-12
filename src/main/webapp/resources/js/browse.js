@@ -152,6 +152,8 @@ const browse = {
             if (numRemainingCopies > 0) {
                 cartButton.appendChild(document.createTextNode("Add to cart"));
                 cartButton.addEventListener("click", browse.addToCart, false);
+                cartButton.setAttribute("data-movieId", `${result["id"]}`);
+
             }  else {
                 cartButton.appendChild(document.createTextNode("Sold out"));
                 cartButton.setAttribute("disabled", "true");
@@ -183,8 +185,15 @@ const browse = {
         return container;
     },
 
-    addToCart : async function() {
+    addToCart : async function(event) {
         console.log("adding to cart");
+        console.log(event.target);
+        const movieId = event.target.getAttribute("data-movieId");
+        fetch(`./api/cart/${movieId}`, {method:'POST'})
+            .then(() => {
+                // Add functionality to update checkout nav styling
+            })
+            .catch((error) => {console.log("Error:", error)});
     }
 };
 
