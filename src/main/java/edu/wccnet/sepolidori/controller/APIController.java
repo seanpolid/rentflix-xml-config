@@ -91,4 +91,9 @@ public class APIController {
 	public List<Movie> getMovies() {
 		return movieService.getMovies();
 	}
+	
+	@GetMapping("/movies/{movieName}")
+	public Movie getMovie(@PathVariable String movieName) {
+		return movieService.getMovie(movieName);
+	}
 }
