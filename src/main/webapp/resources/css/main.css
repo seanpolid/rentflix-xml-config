@@ -314,7 +314,24 @@
 		top: 5px;
 		right: 10px;
 		padding: 5px;
-		
+		cursor: pointer;
+	}
+	
+	.browse .movieInfo .cartButton {
+		position: static;
+		align-self: center;
+		border-radius: 2px;
+		border: 0;
+		background: #fff;
+		color: black;
+	}
+	
+	.browse .movieInfo .cartButton:hover {
+		background: #c9c9c9;
+	}
+	
+	.browse .movieInfo .cartButton[disabled*="true"] {
+		background: #c9c9c9;
 	}
 
 }

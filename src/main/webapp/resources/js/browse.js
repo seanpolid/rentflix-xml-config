@@ -69,10 +69,55 @@ const browse = {
         }
         const movieName = event.target.getAttribute("data-name");
         browse.getMovieInfo(movieName).then(result => {
-            let container = browse.createContainer(result, movieName);
+            const isAdmin = browse.isAdmin()
+            const isCustomer = browse.isCustomer();
+            const isAvailable = browse.isMovieAvailable(result);
+            let container = browse.createContainer(result, movieName, isAdmin, isCustomer, isAvailable);
             container.classList.add("movieInfo");
             browse.main.append(container);
         })
+    },
+
+    isAdmin : function() {
+        if (document.querySelector(".admin")) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    isCustomer : function() {
+        if (document.querySelector(".customer")) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    isMovieAvailable : function(result) {
+        let isMovieAvailable = false;
+        const movieId = result["id"];
+        const totalCopies = result["totalCopies"];
+        if (totalCopies > 0) {
+            let remainingCopies = totalCopies;
+            browse.getInvoiceMovies(movieId)
+                .then(result => {
+                    for (const invoice of result) {
+                        if (invoice["returnDate"] != null) {
+                            remainingCopies -= 1;
+                        }
+                    }
+                });
+            if (remainingCopies) {
+                isMovieAvailable = true;
+            };
+        }
+        return isMovieAvailable;
+    },
+
+    getInvoiceMovies : async function(movieId) {
+        const response = await fetch("./api/invoicemovies/" + movieId) 
+        return await response.json();
     },
 
     getMovieInfo : async function(movieName) {
@@ -80,12 +125,11 @@ const browse = {
         return await response.json();
     },
 
-    createContainer : function(result, movieName) {
+    createContainer : function(result, movieName, isAdmin, isCustomer, isAvailable) {
         const description = document.createTextNode("Description:\n" + result["description"]);
         const yearMade = document.createTextNode("Year made: " + result["yearMade"]);
         const releaseDate = document.createTextNode("Release date: " + result["releaseDate"]);
         const cost = document.createTextNode("Cost: " + result["cost"]);
-        const totalCopies = result["totalCopies"];
         const length = document.createTextNode("Length (minutes): " + result["length"]);
         const rating = document.createTextNode("Rating: " + result["rating"]["name"]);
         const genre = document.createTextNode("Genre: " + result["genre"]["name"]);
@@ -102,6 +146,20 @@ const browse = {
         let genreContainer = document.createElement("li"); 
         let closeButton = document.createElement("button");
 
+        let cartButton;
+        if (isCustomer && !isAdmin) {
+            cartButton = document.createElement("button");
+            cartButton.classList.add("cartButton");
+
+            if (isAvailable) {
+                cartButton.appendChild(document.createTextNode("Add to cart"));
+                cartButton.addEventListener("click", browse.addToCart, false);
+            }  else {
+                cartButton.appendChild(document.createTextNode("Sold out"));
+                cartButton.setAttribute("disabled", "true");
+            }
+        }
+
         movieNameContainer.appendChild(document.createTextNode(movieName));
         descriptionContainer.appendChild(description);
         yearMadeContainer.appendChild(yearMade);
@@ -117,7 +175,14 @@ const browse = {
 
         container.append(closeButton, movieNameContainer, yearMadeContainer, releaseDateContainer, genreContainer, 
             ratingContainer, lengthContainer, costContainer, descriptionContainer);
+        if (cartButton) {
+            container.append(cartButton);
+        }
         return container;
+    },
+
+    addToCart : async function() {
+        console.log("adding to cart");
     }
 };
 
