@@ -45,8 +45,8 @@
 			<ul>
 				<c:forEach var="movie" items="${movies}">
 				<li>
-					<a href="#" class="movieCover"></a>
-					<a href="#" class="movieName">${movie.name}</a>
+					<a href="#" data-name="${movie.name}" class="movieCover"></a>
+					<a href="#" data-name="${movie.name}" class="movieName">${movie.name}</a>
 				</li>
 			</c:forEach>
 			</ul>

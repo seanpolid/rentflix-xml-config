@@ -26,6 +26,7 @@
 		position: sticky;
 		top: 0;
 		background: rgb(0, 0, 0, 0.5);
+		z-index: 20;
 	}
 	
 	nav {
@@ -250,6 +251,11 @@
 	}
 	
 	/* Browse */
+	.browse {
+		position: relative;
+		top: 0;
+		left: 0;
+	}
 	.browse .search {
 		width: 870px;
 		display: flex;
@@ -287,6 +293,29 @@
 	.browse .hide {
 		display: none;
 	}
+	
+	.browse .movieInfo {
+		position: fixed;
+		top: 20vh;
+		background: #121212;
+		border-radius: 5px;
+		border: 1px solid #3e2d3e;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 10px;
+		width: 800px;
+		padding: 20px;
+		height: 400px;
+	}
+	
+	.browse .movieInfo button {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		padding: 5px;
+		
+	}
 
 }
 
@@ -317,9 +346,11 @@
 		display: block;
 	}
 	
+	/* Browse */
 	.browse .search {
 		width: 700px;
 	}
+	
 	.browse .movieCover {
 		height: 300px;
 		width: 200px;		
