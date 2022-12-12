@@ -59,8 +59,6 @@ const userNav = {
             let link;
             if (option ==="Order History") {
                 link = "./orders";
-            } else if (option === "Account Info") {
-                link = "./account";
             } else {
                 link = `./${option.toLowerCase()}`;
             }
