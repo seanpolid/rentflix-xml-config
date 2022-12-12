@@ -283,6 +283,10 @@
 	.browse .movieCover {
 		position: static;
 	}
+	
+	.browse .hide {
+		display: none;
+	}
 
 }
 
