@@ -14,6 +14,7 @@ import edu.wccnet.sepolidori.entity.Genre;
 import edu.wccnet.sepolidori.entity.InvoiceMovie;
 import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.entity.Rating;
+import edu.wccnet.sepolidori.service.CartService;
 import edu.wccnet.sepolidori.service.CustomerService;
 import edu.wccnet.sepolidori.service.GenreService;
 import edu.wccnet.sepolidori.service.InvoiceMovieService;
@@ -31,19 +32,22 @@ public class APIController {
 	private final MovieService movieService;
 	private final GenreService genreService;
 	private final RatingService ratingService;
+	private final CartService cartService;
 	
 	public APIController (InvoiceService invoiceService, 
 						CustomerService customerService, 
 						RatingService ratingService, 
 						MovieService movieService, 
 						InvoiceMovieService invoiceMovieService, 
-						GenreService genreService) {
+						GenreService genreService, 
+						CartService cartService) {
 		this.customerService = customerService;
 		this.invoiceService = invoiceService;
 		this.invoiceMovieService = invoiceMovieService;
 		this.movieService = movieService;
 		this.genreService = genreService;
 		this.ratingService = ratingService;
+		this.cartService = cartService;
 	}
 	
 	@GetMapping("/customers")
@@ -101,6 +105,13 @@ public class APIController {
 	@GetMapping("/invoicemovies/{movieId}")
 	public List<InvoiceMovie> getInvoiceMovies(@PathVariable int movieId) {
 		return invoiceMovieService.getInvoiceMovies(movieId);
+	}
+	
+	@PostMapping("/cart/{movieId}")
+	public void addToCart(@PathVariable int movieId) {
+		Movie movie = movieService.getMovie(movieId);
+		cartService.addMovie(movie);
+		System.out.println(cartService);
 	}
 
 }
