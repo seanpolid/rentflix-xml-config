@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="movie")
 public class Movie {
@@ -58,6 +60,7 @@ public class Movie {
 	@JoinColumn(name="genre_id")
 	private Genre genre;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="movie", fetch=FetchType.LAZY)
 	private List<InvoiceMovie> invoiceMovies = new ArrayList<InvoiceMovie>();
 
@@ -93,8 +96,8 @@ public class Movie {
 		this.yearMade = yearMade;
 	}
 
-	public LocalDate getReleaseDate() {
-		return releaseDate;
+	public String getReleaseDate() {
+		return releaseDate.toString();
 	}
 
 	public void setReleaseDate(String releaseDate) {

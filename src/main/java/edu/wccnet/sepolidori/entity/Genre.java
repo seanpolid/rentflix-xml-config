@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="genre")
@@ -22,7 +25,8 @@ public class Genre {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy="genre")
+	@JsonIgnore
+	@OneToMany(mappedBy="genre", fetch=FetchType.LAZY)
 	private List<Movie> movies = new ArrayList<Movie>();
 
 	public int getId() {
