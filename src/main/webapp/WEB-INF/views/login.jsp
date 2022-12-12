@@ -19,7 +19,7 @@
 			<nav>
 				<a href="./home">RentFlix</a>
 				<ul>
-					<li><a href="#">Browse</a></li>
+					<li><a href="./browse">Browse</a></li>
 					<li><a href="./login" class="selected">Login</a></li>
 				</ul>
 			</nav>
