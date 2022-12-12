@@ -65,11 +65,6 @@ public class APIController {
 		return ratingService.getRatings();
 	}
 	
-	@GetMapping("/ratings/{ratingId}")
-	public Rating getRating(@PathVariable int ratingId) {
-		return ratingService.getRating(ratingId);
-	}
-	
 	@PostMapping("/ratings")
 	public void createRatings(@RequestBody List<Rating> ratings) {
 		for (Rating rating : ratings) {
@@ -81,11 +76,6 @@ public class APIController {
 	@GetMapping("/genres")
 	public List<Genre> getGenres() {
 		return genreService.getGenres();
-	}
-	
-	@GetMapping("/genres/{genreId}")
-	public Genre getGenre(@PathVariable int genreId) {
-		return genreService.getGenre(genreId);
 	}
 	
 	@PostMapping("/genres")
