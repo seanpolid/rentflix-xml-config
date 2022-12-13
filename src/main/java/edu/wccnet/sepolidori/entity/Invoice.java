@@ -34,7 +34,8 @@ public class Invoice {
 	private BigDecimal total;
 	
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, 
+			CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 	

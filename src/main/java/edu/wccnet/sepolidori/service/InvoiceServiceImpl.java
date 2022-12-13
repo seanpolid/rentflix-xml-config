@@ -47,4 +47,10 @@ public class InvoiceServiceImpl implements InvoiceService {
 		invoiceDAO.saveInvoice(invoice);
 	}
 
+	@Override
+	@Transactional
+	public void deleteInvoices() {
+		invoiceDAO.deleteInvoices();
+	}
+
 }

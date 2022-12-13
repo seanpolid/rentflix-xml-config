@@ -10,5 +10,6 @@ public interface InvoiceService {
 	public List<Invoice> getInvoices();
 	public List<Invoice> getInvoices(int customerId);
 	public void saveInvoice(Invoice invoice);
+	public void deleteInvoices();
 	
 }

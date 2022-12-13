@@ -10,5 +10,5 @@ public interface InvoiceDAO {
 	public List<Invoice> getInvoices();
 	public List<Invoice> getInvoices(int customerId);
 	public void saveInvoice(Invoice invoice);
-	
+	public void deleteInvoices();
 }

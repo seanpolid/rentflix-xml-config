@@ -44,4 +44,13 @@ public class InvoiceDAOImpl implements InvoiceDAO {
 		session.saveOrUpdate(invoice);
 	}
 
+	@Override
+	public void deleteInvoices() {
+		Session session = sessionFactory.getCurrentSession();
+		List<Invoice> invoices = session.createQuery("FROM Invoice", Invoice.class).getResultList();
+		for (Invoice invoice : invoices) {
+			session.remove(invoice);
+		}
+	}
+
 }
