@@ -1,8 +1,10 @@
 package edu.wccnet.sepolidori.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,7 @@ import edu.wccnet.sepolidori.entity.Genre;
 import edu.wccnet.sepolidori.entity.InvoiceMovie;
 import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.entity.Rating;
+import edu.wccnet.sepolidori.entity.ReturnMovie;
 import edu.wccnet.sepolidori.service.CartService;
 import edu.wccnet.sepolidori.service.CustomerService;
 import edu.wccnet.sepolidori.service.GenreService;
@@ -112,6 +115,16 @@ public class APIController {
 		Movie movie = movieService.getMovie(movieId);
 		cartService.addMovie(movie);
 		System.out.println(cartService);
+	}
+	
+	@PatchMapping("/return")
+	public void returnMovies(@RequestBody List<ReturnMovie> returnMovies) {
+		for (ReturnMovie returnMovie : returnMovies) {
+			int invoiceMovieId = returnMovie.getInvoiceMovieId();
+			InvoiceMovie invoiceMovie = invoiceMovieService.getInvoiceMovie(invoiceMovieId);
+			invoiceMovie.setReturnDate(LocalDateTime.now());
+			invoiceMovieService.saveInvoiceMovie(invoiceMovie);
+		}
 	}
 
 }
