@@ -21,6 +21,7 @@ import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.service.CartService;
 import edu.wccnet.sepolidori.service.CustomerService;
 import edu.wccnet.sepolidori.service.GenreService;
+import edu.wccnet.sepolidori.service.InvoiceMovieService;
 import edu.wccnet.sepolidori.service.InvoiceService;
 import edu.wccnet.sepolidori.service.LoggedInUserService;
 import edu.wccnet.sepolidori.service.LoginProcessor;
@@ -38,6 +39,7 @@ public class MainController {
 	private final MovieService movieService;
 	private final CartService cartService;
 	private final InvoiceService invoiceService;
+	private final InvoiceMovieService invoiceMovieService;
 	
 	public MainController(CustomerService customerService, 
 						LoggedInUserService loggedInUserService, 
@@ -46,7 +48,8 @@ public class MainController {
 						GenreService genreService, 
 						MovieService movieService, 
 						CartService cartService, 
-						InvoiceService invoiceService) {
+						InvoiceService invoiceService, 
+						InvoiceMovieService invoiceMovieService) {
 		this.loginProcessor = loginProcessor;
 		this.customerService = customerService;
 		this.loggedInUserService = loggedInUserService;
@@ -55,6 +58,7 @@ public class MainController {
 		this.movieService = movieService;
 		this.cartService = cartService;
 		this.invoiceService = invoiceService;
+		this.invoiceMovieService = invoiceMovieService;
 	}
 	
 	@RequestMapping({"/home", "/"})
@@ -129,10 +133,12 @@ public class MainController {
 	}
 	
 	@RequestMapping("/library")
-	public String library(Model model) {
+	public String library(@RequestParam String libraryType, Model model) {
+		System.out.println(libraryType);
 		Customer customer = loggedInUserService.getCustomer();
 		model.addAttribute("customer", customer);
-		model.addAttribute("movies", invoiceService.getInvoices(customer.getId()));
+		model.addAttribute("invoices", invoiceService.getInvoices());
+		model.addAttribute("libraryType", libraryType);
 		return "library";
 	}
 	
