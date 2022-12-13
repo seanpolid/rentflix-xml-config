@@ -15,14 +15,26 @@ const movieInfo = {
             document.querySelector(".movieInfo").remove();
         }
         const movieName = event.target.getAttribute("data-name");
-        movieInfo.getMovieInfo(movieName).then(result => {
-            const isAdmin = movieInfo.isAdmin()
-            const isCustomer = movieInfo.isCustomer();
-            const numRemainingCopies = movieInfo.getNumRemainingCopies(result);
-            let container = movieInfo.createContainer(result, movieName, numRemainingCopies);
-            container.classList.add("movieInfo");
-            movieInfo.main.append(container);
-        })
+        movieInfo.getMovieInfo(movieName)
+        .then((info) => {
+			movieInfo.getInvoiceMovies(info["id"])
+			.then((invoiceMovies) => {
+				let remainingCopies = info["totalCopies"];
+	            for (const invoice of invoiceMovies) {
+	                if (invoice["returnDate"] == null) {
+	                    remainingCopies -= 1;
+	                }
+	            }
+				return [info, remainingCopies];
+			})
+			.then((array) => {
+				const info = array[0];
+				const numRemainingCopies = array[1];
+	            let container = movieInfo.createContainer(info, movieName, numRemainingCopies);
+	            container.classList.add("movieInfo");
+	            movieInfo.main.append(container);
+			})
+		});
     },
 
     isAdmin : function() {
@@ -39,22 +51,6 @@ const movieInfo = {
         } else {
             return false;
         }
-    },
-
-    getNumRemainingCopies : function(result) {
-        const movieId = result["id"];
-        let remainingCopies = result["totalCopies"];
-        if (remainingCopies > 0) {
-            movieInfo.getInvoiceMovies(movieId)
-            .then(result => {
-                for (const invoice of result) {
-                    if (invoice["returnDate"] != null) {
-                        remainingCopies -= 1;
-                    }
-                }
-            });
-        }
-        return remainingCopies;
     },
 
     getInvoiceMovies : async function(movieId) {
@@ -75,8 +71,6 @@ const movieInfo = {
             const listItem = movieInfo.createListItem(data);
 
             const explanation = data["explanation"].toLowerCase();
-            console.log(explanation);
-            console.log(explanation.split("copies") - 1 > 0 && !movieInfo.isAdmin());
             if (explanation.split("copies").length - 1 > 0 && !movieInfo.isAdmin()) {
                 continue;
             }
@@ -143,8 +137,6 @@ const movieInfo = {
     },
  
     addToCart : async function(event) {
-        console.log("adding to cart");
-        console.log(event.target);
         const movieId = event.target.getAttribute("data-movieId");
         fetch(`./api/cart/${movieId}`, {method:'POST'})
             .then(() => {
