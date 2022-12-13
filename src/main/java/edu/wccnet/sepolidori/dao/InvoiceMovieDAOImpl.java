@@ -35,7 +35,7 @@ public class InvoiceMovieDAOImpl implements InvoiceMovieDAO {
 	@Override
 	public void saveInvoiceMovie(InvoiceMovie invoiceMovie) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(invoiceMovie);
+		session.saveOrUpdate(invoiceMovie);
 	}
 
 }
