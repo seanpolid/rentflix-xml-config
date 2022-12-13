@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.wccnet.sepolidori.entity.Customer;
 import edu.wccnet.sepolidori.entity.Genre;
+import edu.wccnet.sepolidori.entity.Invoice;
 import edu.wccnet.sepolidori.entity.InvoiceMovie;
 import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.entity.Rating;
@@ -125,6 +126,12 @@ public class APIController {
 			invoiceMovie.setReturnDate(LocalDateTime.now());
 			invoiceMovieService.saveInvoiceMovie(invoiceMovie);
 		}
+	}
+	
+	@GetMapping("/invoices/{customerId}")
+	public List<Invoice> getInvoices(@PathVariable int customerId) {
+		System.out.println(invoiceService.getInvoices(customerId));
+		return invoiceService.getInvoices(customerId);
 	}
 
 }
