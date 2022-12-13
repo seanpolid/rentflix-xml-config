@@ -145,6 +145,12 @@ public class MainController {
 		return "library";
 	}
 	
+	@RequestMapping("/orders")
+	public String orders(Model model) {
+		model.addAttribute("customer", loggedInUserService.getCustomer());
+		return "order-history";
+	}
+	
 	@RequestMapping("/logout")
 	public String logout() {
 		loggedInUserService.setCustomer(null);
