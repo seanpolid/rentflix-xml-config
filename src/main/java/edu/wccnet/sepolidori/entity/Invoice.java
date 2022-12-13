@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="invoice")
 public class Invoice {
@@ -31,6 +33,7 @@ public class Invoice {
 	@Column(name="total")
 	private BigDecimal total;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="customer_id")
 	private Customer customer;
@@ -46,8 +49,8 @@ public class Invoice {
 		this.id = id;
 	}
 
-	public LocalDateTime getDate() {
-		return date;
+	public String getDate() {
+		return date.toString();
 	}
 
 	public void setDate(LocalDateTime date) {
