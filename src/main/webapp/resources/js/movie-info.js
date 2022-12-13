@@ -7,10 +7,17 @@ const movieInfo = {
 
     init : function() {
         this.movieList.addEventListener("click", this.showMovieInfo, false);
-        this.movieList.addEventListener("click", event => {event.preventDefault()});
+        this.movieList.addEventListener("click", event => {
+			if (!event.target.classList.contains("checkbox")) {
+				event.preventDefault();
+			}
+        });
     },
 
     showMovieInfo : function(event) {
+		if (event.target.classList.contains("checkbox")) {
+			return;
+		}
         if (document.querySelector(".movieInfo")) {
             document.querySelector(".movieInfo").remove();
         }

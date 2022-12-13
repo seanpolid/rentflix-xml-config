@@ -57,9 +57,11 @@ const userNav = {
             anchor.textContent = option;
 
             let link;
-            if (option ==="Order History") {
+            if (option === "Order History") {
                 link = "./orders";
-            } else {
+            } else if (option === "Library") {
+				link = "./library?libraryType=current"
+			}else {
                 link = `./${option.toLowerCase()}`;
             }
             anchor.setAttribute("href", link);
