@@ -382,8 +382,8 @@
 		margin: 0 auto;
 	}
 	
-	.libary table td, .library table th {
-		padding: 15px 0;
+	.library td, .library th {
+		padding: 10px 0;
 	}
 	
 	.library .options {
@@ -412,7 +412,32 @@
 		padding: 5px 8px;
 		margin-top: 10px;
 	}
-
+	
+	/* Order History */
+	.orders h1, .orders table {
+		width: 600px;
+	}
+	
+	.orders h1 {
+		font-size: 30px;
+		text-align: left;
+	}
+	
+	.orders th {
+		border-bottom: 1px solid gray;
+	}
+	
+	.orders td {
+		padding: 5px;
+	}
+	
+	.orders .movieList {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		flex-direction: column;
+		gap: 5px;
+	}
 }
 
 @media screen and (max-width: 1115px) {
