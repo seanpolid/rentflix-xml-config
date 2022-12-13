@@ -3,6 +3,7 @@ package edu.wccnet.sepolidori.controller;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -85,6 +86,9 @@ public class MainController {
 	public String browse(Model model) {
 		model.addAttribute("customer", loggedInUserService.getCustomer());
 		model.addAttribute("movies", movieService.getMovies());
+		if (cartService.getMovies() == null) {
+			cartService.setMovies(new ArrayList<Movie>());
+		}
 		return "browse";
 	}
 	
@@ -129,12 +133,11 @@ public class MainController {
 		invoice.setDate(LocalDateTime.now());
 		invoiceService.saveInvoice(invoice);
 		cartService.setMovies(null);
-		return "redirect:/library";
+		return "redirect:/library?libraryType=current";
 	}
 	
 	@RequestMapping("/library")
 	public String library(@RequestParam String libraryType, Model model) {
-		System.out.println(libraryType);
 		Customer customer = loggedInUserService.getCustomer();
 		model.addAttribute("customer", customer);
 		model.addAttribute("invoices", invoiceService.getInvoices());
