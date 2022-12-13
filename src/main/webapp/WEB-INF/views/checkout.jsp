@@ -40,25 +40,31 @@
 				
 				<table class="movieContainer">
 					<tr>
-						<th></th>
-						<th>Item</th>
-						<th>Price</th>
+						<th class="imageCol"></th>
+						<th class="itemCol">Item</th>
+						<th class="priceCol">Price</th>
 					</tr>
 					<c:set var="totalCost" value="0" />
 					<c:forEach var="movie" items="${movies}">
 						<tr>
 							<td><a href="#" data-name="${movie.name}" class="movieCover"></a></td>
 							<td><a href="#" data-name="${movie.name}" class="movieName">${movie.name}</a></td>
-							<td>${movie.cost}</td>
+							<td class="priceCol">${movie.cost}</td>
 						</tr>
 						<c:set var="totalCost" value="${totalCost + movie.cost}" />
 					</c:forEach>
-					<tr>
-						<td></td>
-						<td></td>
-						<td>${totalCost}</td>
-					</tr>
+					<c:if test="${totalCost != 0}">
+						<tr>
+							<td class="totalRow"></td>
+							<td class="totalRow"></td>
+							<td class="priceCol totalRow">${totalCost}</td>
+						</tr>
+					</c:if>
 				</table>
+				
+				<form method="post" action="./checkout">
+					<input type="submit" value="Checkout" />
+				</form>
 			</section>
 		</main>
 		<footer>
