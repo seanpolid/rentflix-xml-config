@@ -118,14 +118,13 @@ public class MainController {
 			invoiceMovie.setMovie(movie);
 			invoiceMovie.setInvoice(invoice);
 			invoice.addInvoiceMovie(invoiceMovie);
-			System.out.println(movie.getCost());
-			total.add(movie.getCost());
-			System.out.println(total);
+			total = total.add(movie.getCost());
 		}
 		invoice.setCustomer(loggedInUserService.getCustomer());
 		invoice.setTotal(total);
 		invoice.setDate(LocalDateTime.now());
 		invoiceService.saveInvoice(invoice);
+		cartService.setMovies(null);
 		return "redirect:/library";
 	}
 	
