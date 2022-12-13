@@ -33,8 +33,9 @@ public class InvoiceDAOImpl implements InvoiceDAO {
 	@Override
 	public List<Invoice> getInvoices(int customerId) {
 		Session session = sessionFactory.getCurrentSession();
-		String query = "FROM Invoice i WHERE i.customerId = " + customerId;
-		return session.createQuery(query, Invoice.class).getResultList();
+		Query<Invoice> query = session.createQuery("FROM Invoice i WHERE i.customer.id = :customerId", Invoice.class);
+		query.setParameter("customerId", customerId);
+		return query.getResultList();
 	}
 
 	@Override
