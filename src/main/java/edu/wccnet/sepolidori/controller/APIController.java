@@ -19,13 +19,13 @@ import edu.wccnet.sepolidori.entity.InvoiceMovie;
 import edu.wccnet.sepolidori.entity.Movie;
 import edu.wccnet.sepolidori.entity.Rating;
 import edu.wccnet.sepolidori.entity.ReturnMovie;
-import edu.wccnet.sepolidori.service.CartService;
-import edu.wccnet.sepolidori.service.CustomerService;
-import edu.wccnet.sepolidori.service.GenreService;
-import edu.wccnet.sepolidori.service.InvoiceMovieService;
-import edu.wccnet.sepolidori.service.InvoiceService;
-import edu.wccnet.sepolidori.service.MovieService;
-import edu.wccnet.sepolidori.service.RatingService;
+import edu.wccnet.sepolidori.service.concrete.CartService;
+import edu.wccnet.sepolidori.service.interfaces.CustomerService;
+import edu.wccnet.sepolidori.service.interfaces.GenreService;
+import edu.wccnet.sepolidori.service.interfaces.InvoiceMovieService;
+import edu.wccnet.sepolidori.service.interfaces.InvoiceService;
+import edu.wccnet.sepolidori.service.interfaces.MovieService;
+import edu.wccnet.sepolidori.service.interfaces.RatingService;
 
 @RestController
 @RequestMapping("/api")
